@@ -1,4 +1,4 @@
-from model import dehaze_net
+from aodnet.model import dehaze_net
 import torch
 import numpy as np 
 import torchvision
@@ -9,7 +9,7 @@ dehaze_net.load_state_dict(torch.load('weights/dehazer.pth',map_location=device)
 print("-----AOD NET MODEL LOADED-----")
 
 def dehaze_aod(image):
-    data_hazy = (np.asarray(data_hazy)/255.0)
+    data_hazy = (np.asarray(image)/255.0)
     data_hazy = torch.from_numpy(data_hazy).float()
     data_hazy = data_hazy.permute(2,0,1)
     data_hazy = data_hazy.cuda().unsqueeze(0)    

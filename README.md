@@ -15,3 +15,7 @@ A cutting-edge Generative AI based intelligent de-smoking/de-hazing algorithm th
 ### App code
 
 Flutter App code in real_dehaze directory
+
+### Notes
+
+Model weights are available on demand due to size. Contact: vignesh1234can@gmail.com

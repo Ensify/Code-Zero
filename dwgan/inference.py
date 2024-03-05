@@ -1,12 +1,8 @@
-from PIL import Image
 import torch
 import torch.nn as nn
-from model import fusion_net
+from dwgan.model import fusion_net
 from torchvision import transforms
 from torchvision.utils import save_image as imwrite
-import numpy as np
-import time
-import cv2
 
 
 def im_process(image):
@@ -44,5 +40,5 @@ def dehaze_dwgan(image):
         frame_out_down = net(hazy_down.unsqueeze(0))
         frame_out = (torch.cat([frame_out_up[:, :, 0:600, :].permute(0, 2, 3, 1), frame_out_down[:, :, 552:, :].permute(0, 2, 3, 1)],1)).permute(0, 3, 1, 2)
 
-    imwrite(frame_out, "result.png", range=(0, 1))
+    imwrite(frame_out, "result.png")
     return "result.png", frame_out

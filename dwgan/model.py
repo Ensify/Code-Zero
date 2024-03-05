@@ -1,7 +1,7 @@
 import torch.nn as nn
 import math
 import torch
-import Res2Net as Pre_Res2Net
+import dwgan.Res2Net as Pre_Res2Net
 
 def default_conv(in_channels, out_channels, kernel_size, bias=True):
     return nn.Conv2d(in_channels, out_channels, kernel_size, padding=(kernel_size // 2), bias=bias)

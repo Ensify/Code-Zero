@@ -1,21 +1,18 @@
 import torch
 import torchvision.transforms as transforms
-from PIL import Image
-from pathlib import Path
 from torch.autograd import Variable
-import time
 
-from model import IntensityNet
+from intensitynet.model import IntensityNet
 
 inference_transform = transforms.Compose([
     transforms.Resize((256, 256)),
     transforms.ToTensor(),
 ])
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Load the trained model
 model = IntensityNet(device)
-model.load_state_dict(torch.load("weights\haze_detection_model.pth"))
+model.load_state_dict(torch.load("weights\haze_detection_model.pth", map_location= device))
 model.eval()  # Set the model to evaluation mode
 print("-----INTENSITY NET MODEL LOADED-----")
 
