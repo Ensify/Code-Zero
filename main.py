@@ -9,4 +9,4 @@ def main(image):
     else:
         result, image = dehaze_aod(image)
 
-    print(f"Image saved in {result}")
+    return result, image
